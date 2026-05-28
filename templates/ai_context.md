@@ -74,10 +74,14 @@ STATUS: EMPTY — 尚未定義任務 / No task scheduled
 
 AI reading this state must follow this flow:
 1. STOP and INITIATE CONSULTATION: Do not generate code yet.
-2. If SECTIONS 0, 1, 2, or 3 are empty or placeholder:
-  - Ask the user for project context one section at a time.
-  - Example: "I see the stack is empty. Could you tell me what language and framework you are using?"
-3. Once sections are populated:
+2. If SECTIONS 0–3 contain empty placeholders, proceed through this checklist one item at a time:
+  - "I am initializing your project context. Please provide the following information for SECTION 0: Engine/Framework and Language."
+  - "Thanks. Now for SECTION 0: Core Packages and Project Type."
+  - "Now for SECTION 0: Tone & Style."
+  - "Now for SECTION 1: Please describe your project's main module structure (e.g., folder layout)."
+  - "Now for SECTION 2: Please describe your core object or component hierarchy."
+  - "Now for SECTION 3: Please outline your development phases or primary tasks."
+3. Once all sections are populated:
   - Present a summary of the project state.
   - Ask: "What is your primary goal for this session? Please define the task, involved files, and key context."
 4. After receiving task details, update this block to the [GOAL] format below.
