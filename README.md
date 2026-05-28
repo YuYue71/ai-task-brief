@@ -1,4 +1,9 @@
+以下為更新後的 `README.md` 內容，已整合「協作狀態轉移協議」並維持原有架構。
+
+---
+
 # AI Task Brief — Universal AI Collaboration Template
+
 # AI 任務範本 — 通用 AI 協作上下文框架
 
 > A zero-config context template that gets any AI assistant up to speed on your project in seconds.
@@ -32,6 +37,7 @@
 │  4. Task done → AI prompts template update      │
 │     任務完成 → AI 主動詢問並輸出更新版 .md          │
 └─────────────────────────────────────────────────┘
+
 ```
 
 ---
@@ -39,26 +45,36 @@
 ## Quick Start / 快速開始
 
 **EN:**
+
 1. **Easy Way:** Copy the raw content of `templates/ai_context.md` and paste it into your AI chat.
 2. **Automated Setup:** The AI will detect the `STATUS: EMPTY` and automatically guide you through a brief interview to populate the tech stack, structure, and current tasks.
-3. **GitHub Direct:** You can also provide the URL [https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md](https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md) to your AI to initialize the project context instantly.
+3. **GitHub Direct:** You can also provide the URL [https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md](https://www.google.com/search?q=https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md) to your AI to initialize the project context instantly.
 
 **ZH:**
+
 1. **簡易方式：** 複製 `templates/ai_context.md` 的原始內容並貼入 AI 對話。
 2. **自動導引：** AI 偵測到 `STATUS: EMPTY` 後，會自動引導你完成技術棧、結構與當前任務的填寫，無需手動修改 Markdown。
-3. **GitHub 直連：** 你也可以直接將 GitHub 連結 [https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md](https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md) 提供給 AI，讓它直接抓取範本內容並初始化對話。
+3. **GitHub 直連：** 你也可以直接將 GitHub 連結 [https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md](https://www.google.com/search?q=https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md) 提供給 AI，讓它直接抓取範本內容並初始化對話。
+
+---
+
+## Workflow Migration Protocol / 協作狀態轉移協議
+
+**EN:** Need to switch AI chats or start a fresh session? No problem. Simply ask your current AI to "generate a full status snapshot .md". The AI will consolidate your entire project context into a single file that you can paste into any new chat window to instantly restore your workspace.
+
+**ZH:** 需要更換聊天窗口或重啟協作環境嗎？只需要求當前 AI：「請生成目前專案進度的完整任務菜單 (Full Status Snapshot) .md」。AI 將彙整當前所有 context 到一份文件中，你只需將其貼入新的聊天窗口，即可無痛轉移並恢復完整工作環境。
 
 ---
 
 ## Template Sections / 範本區段說明
 
 | Section | Purpose (EN) | 用途 (ZH) |
-|---------|-------------|-----------|
+| --- | --- | --- |
 | SECTION 0 | Immutable tech stack | 不變的技術棧 |
 | SECTION 1 | Script / module map | 腳本 / 模組地圖 |
 | SECTION 2 | Scene / object / component tree | 場景 / 物件 / 元件樹 |
 | SECTION 3 | Development kanban | 開發進度看板 |
-| SECTION 4 | Active task brief (AI-managed) | 當前任務（AI 自動管理）|
+| SECTION 4 | Active task brief (AI-managed) | 當前任務（AI 自動管理） |
 | SECTION 5 | Coding contract | 編碼規範 |
 | SECTION 6 | AI output rules | AI 輸出規則 |
 
@@ -87,14 +103,15 @@ ai-task-brief/
 ├── README.md
 ├── CHANGELOG.md
 └── LICENSE
+
 ```
 
 ---
 
 ## Contributing / 貢獻
 
-Issues and PRs welcome. See [docs/faq.md](docs/faq.md) for contribution guidelines.
-歡迎提交 Issue 與 PR，貢獻說明請見 [docs/faq.md](docs/faq.md)。
+Issues and PRs welcome. See [docs/faq.md]() for contribution guidelines.
+歡迎提交 Issue 與 PR，貢獻說明請見 [docs/faq.md]()。
 
 ---
 
