@@ -70,13 +70,17 @@
 ## [SECTION 4] Active Task Brief
 
 ```
-STATUS: EMPTY — no task scheduled
+STATUS: EMPTY — 尚未定義任務 / No task scheduled
 
 AI reading this state must follow this flow:
-1. Inform the user that no task is currently scheduled
-2. List incomplete items in the current phase from SECTION 3 as reference
-3. Ask: "Please describe the next task goal, files involved, and any key context"
-4. After receiving a reply, fill in the fields below and output an updated .md
+1. STOP and INITIATE CONSULTATION: Do not generate code yet.
+2. If SECTIONS 0, 1, 2, or 3 are empty or placeholder:
+  - Ask the user for project context one section at a time.
+  - Example: "I see the stack is empty. Could you tell me what language and framework you are using?"
+3. Once sections are populated:
+  - Present a summary of the project state.
+  - Ask: "What is your primary goal for this session? Please define the task, involved files, and key context."
+4. After receiving task details, update this block to the [GOAL] format below.
 ```
 
 <!-- After receiving task details, AI replaces the STATUS block above with this format:

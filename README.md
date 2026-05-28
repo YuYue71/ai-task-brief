@@ -39,16 +39,14 @@
 ## Quick Start / 快速開始
 
 **EN:**
-1. Download [`templates/ai_context.md`](templates/ai_context.md)
-2. Fill in SECTION 0 (stack), SECTION 1 (files), SECTION 2 (structure), SECTION 3 (kanban)
-3. Leave SECTION 4 as `STATUS: EMPTY`
-4. Paste the entire file into your next AI chat — the AI handles the rest
+1. **Easy Way:** Copy the raw content of `templates/ai_context.md` and paste it into your AI chat.
+2. **Automated Setup:** The AI will detect the `STATUS: EMPTY` and automatically guide you through a brief interview to populate the tech stack, structure, and current tasks.
+3. **GitHub Direct:** You can also provide the URL [https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md](https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md) to your AI to initialize the project context instantly.
 
 **ZH:**
-1. 下載 [`templates/ai_context.md`](templates/ai_context.md)
-2. 填入 SECTION 0（技術棧）、SECTION 1（檔案）、SECTION 2（物件結構）、SECTION 3（看板）
-3. SECTION 4 保持 `STATUS: EMPTY` 不動
-4. 將整份檔案貼入 AI 對話 — AI 會接管後續流程
+1. **簡易方式：** 複製 `templates/ai_context.md` 的原始內容並貼入 AI 對話。
+2. **自動導引：** AI 偵測到 `STATUS: EMPTY` 後，會自動引導你完成技術棧、結構與當前任務的填寫，無需手動修改 Markdown。
+3. **GitHub 直連：** 你也可以直接將 GitHub 連結 [https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md](https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md) 提供給 AI，讓它直接抓取範本內容並初始化對話。
 
 ---
 
