@@ -80,8 +80,6 @@
 ai-task-brief/
 ├── templates/
 │   └── ai_context.md          # The template / 主範本
-├── examples/
-│   └── unity_2d_game.md       # Filled example (Unity 2D) / 填寫範例
 ├── docs/
 │   ├── section-guide.md       # Detailed section guide / 區段填寫指南
 │   └── faq.md                 # FAQ / 常見問題
