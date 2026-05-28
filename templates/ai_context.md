@@ -1,28 +1,53 @@
-# [Project Name / 專案名稱] — AI Task Brief
-> Paste this entire file at the start of every AI conversation.
-> 每次開啟新任務前，將此檔案完整貼入對話首則。
->
-> **i18n:** This template is in English by default. When an AI first processes
-> STATUS: EMPTY, it will detect your language and append inline translations
-> automatically. No configuration needed.
-> **i18n:** 此範本預設為英文。AI 首次處理 STATUS: EMPTY 時，會自動偵測使用者語言
-> 並在英文後方行內附加譯文，無需任何設定。
+# AI Collaborative Task Brief
+<!-- =========================================================
+  BOOT PROTOCOL — AI reads this block first, every session.
+  
+  STEP 1 — Detect STATUS in [SECTION 4].
+  
+  IF STATUS: EMPTY
+    → Do NOT generate code.
+    → Detect user's language from their first message.
+    → Append inline i18n translations to all headings, directives,
+      and annotation-class text throughout this document.
+      Scope: titles / instructional lines / comment labels ONLY.
+      Do NOT translate checklist item values (task names, file
+      paths, variable names, version strings).
+    → Begin structured consultation — one question group at a time
+      — following the INIT FLOW defined in [SECTION 4].
+
+  IF STATUS: ACTIVE
+    → Parse all sections silently.
+    → Output a single-line context acknowledgement:
+      "Context loaded — [Project Name], Phase [N], last task: [X]."
+    → Ask: "What is the next task for this session?"
+    → Do NOT repeat project info back unless asked.
+
+  /snapshot COMMAND (any point in conversation)
+    → Output the COMPLETE current state of this file as a raw
+      Markdown code block — no prose, no preamble.
+    → User pastes it into a new chat window to resume instantly.
+    → The snapshot must reflect all updates applied this session
+      before being output.
+========================================================= -->
 
 ---
 
 ## [SECTION 0] Immutable Stack
+<!-- Fill once. Never modified mid-session. -->
 
-| Field | Value |
-|-------|-------|
-| Engine / Framework | [e.g. Unity 6.4 / React 18 / Python 3.12] |
-| Language | [e.g. C# / TypeScript / Python] |
-| Core Packages | [e.g. Input System / LDtkUnity / Tailwind] |
-| Project Type | [e.g. 2D Platformer / Web App / CLI Tool] |
-| Tone & Style | [e.g. Dark narrative / Enterprise dashboard / Minimal utility] |
+| Field              | Value                                              |
+|--------------------|----------------------------------------------------|
+| Engine / Framework | [e.g. Unity 6 / React 18 / Python 3.12]           |
+| Language           | [e.g. C# / TypeScript / Python]                   |
+| Core Packages      | [e.g. Input System / LDtkUnity / Tailwind]        |
+| Project Type       | [e.g. 2D Platformer / Web App / CLI Tool]         |
+| Target Platform    | [e.g. Windows / Web / iOS]                        |
+| Tone & Style       | [e.g. Dark narrative / Enterprise dashboard]      |
 
 ---
 
 ## [SECTION 1] Module Map
+<!-- Directory tree. AI adds/removes nodes as files are created or deleted. -->
 
 ```
 [project-root]/
@@ -37,9 +62,7 @@
 ---
 
 ## [SECTION 2] Object / Component Structure
-
-> Fill in the core object tree or component dependency graph.
-> Annotate key components or responsibilities in parentheses.
+<!-- Core object tree or component dependency graph. -->
 
 ```
 [Root / Entry Point]
@@ -50,95 +73,128 @@
 └── [ObjectC]   ([Component])
 ```
 
-**Architecture notes:** [Any context that helps the AI — animation system, state management pattern, data flow, etc.]
+**Architecture notes:** [Animation system, state management pattern, data flow, etc.]
 
 ---
 
 ## [SECTION 3] Development Kanban
+<!-- □ = pending   ✓ = complete   ● = in progress   ✗ = blocked -->
 
 ```
-[Phase 1] [Phase Name]  □[TaskA]  □[TaskB]  □[TaskC]
-[Phase 2] [Phase Name]  □[TaskA]  □[TaskB]
-[Phase 3] [Phase Name]  □[TaskA]  □[TaskB]
-[Phase 4] [Phase Name]  □[TaskA]
+[Phase 1] [Phase Name]   □ [TaskA]   □ [TaskB]   □ [TaskC]
+[Phase 2] [Phase Name]   □ [TaskA]   □ [TaskB]
+[Phase 3] [Phase Name]   □ [TaskA]   □ [TaskB]
+[Phase 4] [Phase Name]   □ [TaskA]
 [Final]   Release / Deploy
 ```
-> Mark completed items: □ → ✓
 
 ---
 
 ## [SECTION 4] Active Task Brief
 
 ```
-STATUS: EMPTY — 尚未定義任務 / No task scheduled
+STATUS: EMPTY
 
-AI reading this state must follow this flow:
-1. STOP and INITIATE CONSULTATION: Do not generate code yet.
-2. If SECTIONS 0–3 contain empty placeholders, proceed through this checklist one item at a time:
-  - "I am initializing your project context. Please provide the following information for SECTION 0: Engine/Framework and Language."
-  - "Thanks. Now for SECTION 0: Core Packages and Project Type."
-  - "Now for SECTION 0: Tone & Style."
-  - "Now for SECTION 1: Please describe your project's main module structure (e.g., folder layout)."
-  - "Now for SECTION 2: Please describe your core object or component hierarchy."
-  - "Now for SECTION 3: Please outline your development phases or primary tasks."
-3. Once all sections are populated:
-  - Present a summary of the project state.
-  - Ask: "What is your primary goal for this session? Please define the task, involved files, and key context."
-4. After receiving task details, update this block to the [GOAL] format below.
+INIT FLOW — AI executes this sequence, one group per exchange:
+
+  GROUP 1 — Core Stack
+    "To initialize your project context, please provide:
+     · Engine / Framework and primary Language
+     · Core Packages (libraries, plugins, key dependencies)"
+
+  GROUP 2 — Project Identity
+    "Next:
+     · Project Type (e.g. 2D platformer, REST API, CLI tool)
+     · Target Platform
+     · Tone & Style (e.g. dark narrative, minimal utility)"
+
+  GROUP 3 — Module Map (SECTION 1)
+    "Now describe your main module or folder structure.
+     A rough directory tree or list of top-level folders is sufficient."
+
+  GROUP 4 — Object / Component Hierarchy (SECTION 2)
+    "Describe the core object or component hierarchy —
+     entry point, major objects, key components attached to each."
+
+  GROUP 5 — Development Phases (SECTION 3)
+    "Outline your development phases and primary tasks per phase.
+     Rough descriptions are fine; they will be refined as work progresses."
+
+  GROUP 6 — Session Goal
+    After all sections are populated:
+    · Present a compact project summary (max 5 bullet points).
+    · Ask: "All sections initialized. What is your primary goal for
+      this session? Specify the task, files involved, and key context."
+    · On reply, replace this STATUS block with the [GOAL] format below.
 ```
 
-<!-- After receiving task details, AI replaces the STATUS block above with this format:
+<!-- ── ACTIVE TASK FORMAT (replaces STATUS block above) ──────────────
 
 [GOAL]
-(Specific objective of this task)
+(Specific objective of this session)
 
 [FILES BEING MODIFIED]
-- path/to/file.ext
+- path/to/file.ext   # change intent
 
 [DEPENDENCIES]
-- path/to/file.ext  # reason
+- path/to/file.ext   # reason referenced
 
 [KEY VARIABLES / STATE]
-- variableName (Type — description)
+- variableName (Type — description of encapsulated state)
 
 [CODE SNIPPET / ERROR LOG]
 (Paste relevant code or error message here)
 
 [OUTPUT CONSTRAINTS]
-1. Output modified code block only — no prose outside code.
-2. Bug analysis, timing notes, and collaboration risks go inside code comments.
-3. If information is insufficient for 100% correct code, stop and list questions.
--->
+1. Output modified code block only — no prose outside code blocks.
+2. Bug analysis, timing notes, and risk flags go inside code comments.
+3. If information is insufficient for a correct output, stop and list
+   blocking questions before generating any code.
+
+─────────────────────────────────────────────────────────────────── -->
 
 ---
 
 ## [SECTION 5] Coding Contract
 
-- **Literate Programming:**
+- **Literate Programming (文字化編程):**
   - Top of every file: comment block listing all internal dependencies
   - Above every function: comment stating its exact responsibility
-  - External function / third-party API calls: inline comment with source file and expected behavior
-- **Bilingual annotation:** Every English technical term followed by its translation, e.g. `Thread Pool (執行緒池)`
-- **Risk annotation:** Null-reference, race condition, and performance risks must be marked inside code comments
-- [Add project-specific rules here]
+  - Every variable declaration: inline comment describing encapsulated state
+  - External API / third-party calls: inline comment with source and expected behavior
+  - Standard syntax and trivial logic: no comment required
+- **Bilingual Annotation:** Every English technical term followed by its translation.
+  Example: `Thread Pool (執行緒池)`, `Race Condition (競爭條件)`
+- **Risk Annotation:** Null-reference, race condition (競爭條件), and performance
+  risks must be flagged inside code comments — never in prose.
+- **Convergence Gate:** When an asset reaches its engineering sweet spot (甜蜜點),
+  refuse further micro-optimization and state the reason explicitly.
+- [Add project-specific rules below this line]
 
 ---
 
 ## [SECTION 6] AI Output Rules
 
-- No preamble, no postamble — deliver code or solution directly
-- Insufficient information → stop generation, output question list
-- Engineering sweet spot reached → refuse further micro-optimization, state reason explicitly
-- No apologies — on error, execute a Cognitive Pivot and analyse the root cause directly
+- No preamble, no postamble — deliver code or structured output directly.
+- Insufficient information → halt, output a numbered question list.
+- Engineering sweet spot reached → refuse optimization, state reason.
+- No apologies — on error, execute a Cognitive Pivot and analyse root cause.
+- **Post-task protocol:** After each task is confirmed complete, AI asks:
+  > "Task complete. Update the brief?
+  >  If yes: ① next task direction ② files added / removed / modified this session."
+  On confirmation, AI outputs the updated sections as a Markdown patch.
+- **/snapshot:** Output full document as a single raw Markdown code block.
+  No prose before or after. Snapshot reflects all session updates.
 
 ---
 
-## [Update Protocol / 範本更新協議]
+## [SECTION 7] Session Log
+<!-- AI appends one entry per completed task. Never deletes entries. -->
 
-After each task is complete, the AI must automatically:
-1. Ask: "Task complete. Update the template? If yes, provide: ① next task direction ② list of files added / removed / modified this session"
-2. On reply, output a new .md covering:
-   - SECTION 1 — add/remove module nodes
-   - SECTION 2 — add/remove object nodes or component annotations
-   - SECTION 3 — tick completed items (□ → ✓)
-   - SECTION 4 — replace with next task content, or write STATUS: EMPTY to trigger the inquiry flow
+```
+[YYYY-MM-DD] [Task summary — one line]
+  Modified : [file list]
+  Added    : [file list or none]
+  Removed  : [file list or none]
+  Notes    : [risk flags, deferred items, architectural decisions]
+```

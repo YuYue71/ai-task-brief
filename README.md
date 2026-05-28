@@ -1,99 +1,112 @@
-以下為更新後的 `README.md` 內容，已整合「協作狀態轉移協議」並維持原有架構。
-
----
-
 # AI Task Brief — Universal AI Collaboration Template
-
 # AI 任務範本 — 通用 AI 協作上下文框架
 
-> A zero-config context template that gets any AI assistant up to speed on your project in seconds.
-> 一份零設定的上下文範本，讓任何 AI 助手在數秒內進入你的專案狀態。
+> A zero-config Markdown context template that gets any AI assistant up to speed on your project in seconds.
+> 一份零設定的 Markdown 上下文範本，讓任何 AI 助手在數秒內進入你的專案狀態。
 
 ---
 
 ## What is this? / 這是什麼？
 
-**EN:** `AI Task Brief` is a structured Markdown template you paste at the start of every AI conversation. It eliminates the "explain my project again" tax by encoding your tech stack, file structure, scene hierarchy, progress board, and current task into a single living document that the AI can parse instantly.
+`AI Task Brief` is a structured Markdown template you paste at the start of every AI conversation. It encodes your tech stack, file structure, component hierarchy, progress board, and current task into a single living document — no repeated explanations, no lost context.
 
-**ZH:** `AI Task Brief` 是一份結構化的 Markdown 範本，在每次 AI 對話開始時貼入。它將技術棧、檔案結構、物件層級、進度看板與當前任務編碼進單一文件，讓 AI 無需重複說明即可立即進入狀況。
+`AI Task Brief` 是一份結構化的 Markdown 範本，在每次 AI 對話開始時貼入。它將技術棧、檔案結構、元件層級、進度看板與當前任務編碼進單一文件，讓 AI 無需重複說明即可立即進入狀況。
 
 ---
 
 ## How it works / 運作流程
 
 ```
-┌─────────────────────────────────────────────────┐
-│  1. Copy template  →  Fill SECTION 0–3 once     │
-│     複製範本           填寫 SECTION 0–3（一次性）  │
-├─────────────────────────────────────────────────┤
-│  2. Paste into AI chat at conversation start    │
-│     每次對話開頭貼入 AI 對話                        │
-├─────────────────────────────────────────────────┤
-│  3. AI reads STATUS in SECTION 4                │
-│     AI 讀取 SECTION 4 的 STATUS 旗標              │
-│     EMPTY  →  AI asks for next task             │
-│     FILLED →  AI starts working immediately     │
-├─────────────────────────────────────────────────┤
-│  4. Task done → AI prompts template update      │
-│     任務完成 → AI 主動詢問並輸出更新版 .md          │
-└─────────────────────────────────────────────────┘
+1. Copy template  →  Paste into AI chat
+   複製範本           貼入 AI 對話開頭
 
+2. AI reads STATUS in SECTION 4
+   AI 讀取 SECTION 4 的 STATUS 旗標
+
+   STATUS: EMPTY   →  AI runs the init interview (one question group at a time)
+                      AI 執行初始化問答（每次一組問題）
+
+   STATUS: ACTIVE  →  AI silently parses all sections, confirms context in one line,
+                      then asks for the session task
+                      AI 靜默解析所有區段，單行確認後直接詢問本次任務
+
+3. Task done  →  AI prompts update  →  You confirm  →  AI outputs Markdown patch
+   任務完成    →  AI 主動詢問更新    →  確認後 AI 輸出更新的 .md patch
+
+4. /snapshot  →  AI outputs full current state as a raw Markdown block
+   /snapshot  →  AI 輸出當前完整狀態的 raw Markdown 區塊，可直接搬運至新對話
 ```
 
 ---
 
 ## Quick Start / 快速開始
 
-**EN:**
+**Option 1 — Direct paste / 直接貼入**
 
-1. **Easy Way:** Copy the raw content of `templates/ai_context.md` and paste it into your AI chat.
-2. **Automated Setup:** The AI will detect the `STATUS: EMPTY` and automatically guide you through a brief interview to populate the tech stack, structure, and current tasks.
-3. **GitHub Direct:** You can also provide the URL `https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md` to your AI to initialize the project context instantly.
+Copy the raw content of `templates/ai_context.md` and paste it at the start of any AI chat. The AI detects `STATUS: EMPTY` and guides you through setup automatically.
 
-**ZH:**
+複製 `templates/ai_context.md` 的原始內容，貼入任意 AI 對話開頭。AI 偵測到 `STATUS: EMPTY` 後會自動引導填寫，無需手動編輯 Markdown。
 
-1. **簡易方式：** 複製 `templates/ai_context.md` 的原始內容並貼入 AI 對話。
-2. **自動導引：** AI 偵測到 `STATUS: EMPTY` 後，會自動引導你完成技術棧、結構與當前任務的填寫，無需手動修改 Markdown。
-3. **GitHub 直連：** 你也可以直接將 GitHub 連結 `https://github.com/YuYue71/ai-task-brief/blob/main/templates/ai_context.md` 提供給 AI，讓它直接抓取範本內容並初始化對話。
+**Option 2 — GitHub direct link / GitHub 直連**
 
----
+Provide the raw file URL to your AI:
 
-## Workflow Migration Protocol / 協作狀態轉移協議
+直接將原始檔連結提供給 AI：
 
-**EN:** Need to switch AI chats or start a fresh session? No problem. Simply ask your current AI to "generate a full status snapshot .md". The AI will consolidate your entire project context into a single file that you can paste into any new chat window to instantly restore your workspace.
+```
+https://raw.githubusercontent.com/YuYue71/ai-task-brief/main/templates/ai_context.md
+```
 
-**ZH:** 需要更換聊天窗口或重啟協作環境嗎？只需要求當前 AI：「請生成目前專案進度的完整任務菜單 (Full Status Snapshot) .md」。AI 將彙整當前所有 context 到一份文件中，你只需將其貼入新的聊天窗口，即可無痛轉移並恢復完整工作環境。
+The AI fetches and initializes the template in one step.
+AI 會直接抓取並初始化範本。
 
 ---
 
 ## Template Sections / 範本區段說明
 
-| Section | Purpose (EN) | 用途 (ZH) |
-| --- | --- | --- |
-| SECTION 0 | Immutable tech stack | 不變的技術棧 |
-| SECTION 1 | Script / module map | 腳本 / 模組地圖 |
-| SECTION 2 | Scene / object / component tree | 場景 / 物件 / 元件樹 |
-| SECTION 3 | Development kanban | 開發進度看板 |
-| SECTION 4 | Active task brief (AI-managed) | 當前任務（AI 自動管理） |
-| SECTION 5 | Coding contract | 編碼規範 |
-| SECTION 6 | AI output rules | AI 輸出規則 |
+| Section | Purpose / 用途 | Mutability / 可變性 |
+|---------|---------------|-------------------|
+| SECTION 0 | Immutable tech stack / 不可變技術棧 | Set once / 設定後鎖定 |
+| SECTION 1 | Module / file map / 模組與檔案地圖 | Updated on file changes / 隨檔案異動更新 |
+| SECTION 2 | Object / component hierarchy / 物件與元件層級 | Updated on arch changes / 隨架構演進更新 |
+| SECTION 3 | Development kanban / 開發進度看板 | Updated per task / 每次任務後更新 |
+| SECTION 4 | Active task brief (AI-managed) / 當前任務（AI 自動管理） | Managed by AI / AI 維護 |
+| SECTION 5 | Coding contract / 編碼規範 | Project-specific / 依專案設定 |
+| SECTION 6 | AI output rules + snapshot protocol / AI 輸出規則與快照協議 | Fixed / 固定 |
+| SECTION 7 | Session log (append-only) / Session 紀錄（只增不刪） | Append only / 僅追加 |
 
 ---
 
 ## i18n / 多語言支援
 
-**EN:** The default template language is English. When an AI first builds your task list from `STATUS: EMPTY`, it will detect the language you write in and automatically append translations inline — no configuration needed.
+The template is English by default. When the AI first processes `STATUS: EMPTY`, it detects your language from your first message and appends inline translations to all structural text — headings, directives, and annotation labels. Task values (task names, file paths, variable names) are never translated.
 
-**ZH:** 預設範本語言為英文。當 AI 首次從 `STATUS: EMPTY` 建置任務清單時，會自動偵測你所使用的語言，並在英文後方行內附加對應語言的譯文，無需任何設定。
+範本預設為英文。AI 首次處理 `STATUS: EMPTY` 時，會從你的第一則訊息偵測語言，並在所有結構性文字後方附加行內譯文（標題、指示語、註解標籤）。任務名稱、檔案路徑、變數名稱不在翻譯範圍內。
 
 ---
 
-## Files / 檔案說明
+## Session Migration / 協作狀態轉移
+
+To move to a new chat window at any point:
+
+需要轉移到新聊天窗口時：
+
+```
+/snapshot
+```
+
+The AI outputs the complete current state of the brief as a raw Markdown code block. Paste it into a new chat — the AI resumes instantly with full context.
+
+AI 輸出當前完整任務菜單的 raw Markdown 區塊。貼入新聊天窗口後，AI 可立即恢復全部上下文，無需重新說明。
+
+---
+
+## Repository Structure / 檔案結構
 
 ```
 ai-task-brief/
 ├── templates/
-│   └── ai_context.md          # The template / 主範本
+│   └── ai_context.md          # Main template / 主範本
 ├── docs/
 │   ├── section-guide.md       # Detailed section guide / 區段填寫指南
 │   └── faq.md                 # FAQ / 常見問題
@@ -103,15 +116,15 @@ ai-task-brief/
 ├── README.md
 ├── CHANGELOG.md
 └── LICENSE
-
 ```
 
 ---
 
 ## Contributing / 貢獻
 
-Issues and PRs welcome. See [docs/faq.md]() for contribution guidelines.
-歡迎提交 Issue 與 PR，貢獻說明請見 [docs/faq.md]()。
+Issues and PRs are welcome. See [docs/faq.md](docs/faq.md) for contribution guidelines.
+
+歡迎提交 Issue 與 PR，貢獻說明請見 [docs/faq.md](docs/faq.md)。
 
 ---
 
